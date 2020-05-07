@@ -1,158 +1,21 @@
 ---
-title: Text and Typography
-author: Cotes Chung
-date: 2019-08-08 11:33:00 +0800
-categories: [Blogging, Demo]
-tags: [typography]
+title: Welcome to Unpacked
+author: Murphy
+date: 2020-05-07 23:00:00 +0000
+categories: [Update]
+tags: []
 ---
 
-This Jekyll template totally compatible with Markdown syntax. Now, let's take a look for the text and typography in this theme.
+![Unpacked Logo]({{ "/assets/img/unpacked.png" | relative_url }})
 
-## Titles
+Unpacked is a new project focusing on documenting my learning experience with reverse engineering and malware analysis. I've done some reverse engineering in the past, but have never delved deeper into the world of low-level programming. If you're a complete beginner or want to learn more about reversing malware, then feel free to follow my journey.
 
-***
-# H1
+## $ whoami
+I'm currently a 2nd year university student studying for my BSc in Computer Science. I run a lot of cyber security events around campus and want to get more students involved in the fun world of information security. Unfortunately, my university doesn't have many options for cyber security until 4th year, so I have to find time to research on my own when I'm not busy with my degree. At the time of writing this, the country is in lockdown due to COVID-19, so now's a great time to tackle this massive project.
 
-<h2 data-toc-skip>H2</h2>
+I'm by no means a great writer, but this is something I hope to improve on as I write more articles. So please bear with me while I discover my style of writing :)
 
-<h3 data-toc-skip>H3</h3>
+## Plans
+I'm going to be doing some crackmes (I'll explain what these are in my next blog post) over the next week as well as some reversing challenges on sites like HackTheBox so that I can get some basic practice in. I'll also be researching x86 assembly and system internals so that I can have a good foundational understanding before moving onto more advanced techniques. Once I've got basic reversing skills down, I'm going to move onto setting up a lab for malware analysis and starting with some samples that people have already analysed so I can compare. I'll be posting all write-ups on this blog, so make sure to follow along.
 
-#### H4
-
-***
-
-## Paragraph
-
-I wandered lonely as a cloud
-
-That floats on high o'er vales and hills,
-
-When all at once I saw a crowd,
-
-A host, of golden daffodils;
-
-Beside the lake, beneath the trees,
-
-Fluttering and dancing in the breeze.
-
-## Block Quote
-
-> This line to shows the Block Quote.
-
-## Tables
-
-|Company|Contact|Country|
-|:---|:--|---:|
-|Alfreds Futterkiste | Maria Anders | Germany
-|Island Trading | Helen Bennett | UK
-|Magazzini Alimentari Riuniti | Giovanni Rovelli | Italy
-
-## Link
-
-[http://127.0.0.1:4000](http://127.0.0.1:4000)
-
-
-## Footnote
-
-Click the hook will locate the footnote[^footnote].
-
-
-## Image
-
-![Desktop View]({{ "/assets/img/sample/mockup.png" | relative_url }})
-
-
-## Inline code
-
-This is an example of `Inline Code`.
-
-
-## Code Snippet
-
-### Common
-
-```
-This is a common code snippet, without syntax highlight and line number.
-```
-
-### Specific Languages
-
-#### Console
-
-```console
-$ date
-Sun Nov  3 15:11:12 CST 2019
-```
-
-
-#### Terminal
-
-```terminal
-$ env |grep SHELL
-SHELL=/usr/local/bin/bash
-PYENV_SHELL=bash
-```
-
-#### Ruby
-
-```ruby
-def sum_eq_n?(arr, n)
-  return true if arr.empty? && n == 0
-  arr.product(arr).reject { |a,b| a == b }.any? { |a,b| a + b == n }
-end
-```
-
-#### Shell
-
-```shell
-if [ $? -ne 0 ]; then
-    echo "The command was not successful.";
-    #do the needful / exit
-fi;
-```
-
-#### Liquid
-
-{% raw %}
-```liquid
-{% if product.title contains 'Pack' %}
-  This product's title contains the word Pack.
-{% endif %}
-```
-{% endraw %}
-
-#### HTML
-
-```html
-<div class="sidenav">
-  <a href="#contact">Contact</a>
-  <button class="dropdown-btn">Dropdown
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-  <a href="#contact">Search</a>
-</div>
-```
-
-**Horizontal Scrolling**
-
-```html
-<div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading" id="{{ category_name }}">
-      <i class="far fa-folder"></i>
-      <p>This is a very long long long long long long long long long long long long long long long long long long long long long line.</p>
-      </a>
-    </div>
-  </div>
-</div>
-```
-
-
-## Reverse Footnote
-
-[^footnote]: The footnote source.
+I don't have a schedule at the moment, but as I go along I can get a better idea of how long it takes me to write a blog post or a write-up and can make a more consistent schedule.
