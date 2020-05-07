@@ -22,7 +22,7 @@ url: 'https://unpacked.io'
 
 author: Murphy                  # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /assets/img/sample/avatar.gif   # support internet resources
 
 github:
   username: github_username             # change to your github username
