@@ -76,7 +76,7 @@ So the program is looking for a password. A simple way to do beat this would be 
 
 ![IDA Graph View]({{ "/assets/img/1/ida_flow.png" | relative_url }})
 
-IDA's graph view made it very simple to follow the control flow of the program. There are two strings that stand out to me at the top `Enter the password: ` and `pass`. It's very likely that `pass` is the password, but I decided to follow the instructions step-by-step to bet a better understanding of how these strings were being compared.
+IDA's graph view made it very simple to follow the control flow of the program. There are two strings that stand out to me at the top `"Enter the password: "` and `"pass"`. It's very likely that `pass` is the password, but I decided to follow the instructions step-by-step to get a better understanding of how these strings were being compared.
 
 ```
 var_60 = byte ptr -60h
@@ -97,7 +97,7 @@ lea     rdi, cout
 call    basic_ostream
 ```
 
-From my understanding, this chunk of code is creating space on the stack at `rbp-60h` and storing the string `pass`. It then creates space at `rbp-40h` and prints `Enter the password: ` out to the screen using `cout`. This part of the code is just initialising variables and printing to the console, but the next bit of code is where the main logic behind the program starts.
+From my understanding, this chunk of code is creating space on the stack at `rbp-60h` and storing the string `pass`. It then creates space at `rbp-40h` and prints `"Enter the password: "` out to the screen using `cout`. This part of the code is just initialising variables and printing to the console, but the next bit of code is where the main logic behind the program starts.
 
 ```
 lea     rax, [rbp+var_40]
