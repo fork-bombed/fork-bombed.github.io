@@ -3,7 +3,7 @@ title: Tools and Practice
 author: Murphy
 date: 2020-05-13 09:00:00 +0100
 categories: [Reverse Engineering]
-tags: [ghidra, radare2, gdb, ida, ollydbg, crackme]
+tags: [tools, crackme]
 ---
 
 In order to start reversing my first program, I'll need (at least) two tools: a disassembler and a debugger. A disassembler converts machine code into assembly language and will allow me to view the program's instructions without actually running it (*static analysis*). A debugger will allow me to view and alter the program's memory while it's running (*dynamic analysis*). This is very powerful as I can set breakpoints and view data in registers and on the stack as each instruction is executed.
