@@ -56,7 +56,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 
 .post-navigation {
   padding-top: 3rem;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 
   .btn {
     @include btn-post-nav;
@@ -127,6 +127,7 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
 }
 
 #toc-wrapper {
+  margin-top: 7rem;
   border-left: 1px solid rgba(158, 158, 158, 0.17);
   position: -webkit-sticky;
   position: sticky;

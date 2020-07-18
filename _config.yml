@@ -8,33 +8,35 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Unpacked.io                          # the main title
+title: Chirpy                          # the main title
 
-tagline: My journey through Reverse Engineering and Malware Analysis  # it will display as the sub-title
+tagline: A text-focused Jekyll theme.  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Follow my journey as I learn more about Reverse Engineering and Malware Analysis. 
+  A minimal, portfolio, sidebar,
+  bootstrap Jekyll theme with responsive web design
+  and focuses on text presentation.
 
 # Replace with the website url, e.g. 'https://username.github.io'
-url: 'https://unpacked.io'
+url: 'protocol://domain'
 
-author: Murphy                  # change to your full name
+author: your_full_name                  # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: fork-bombed             # change to your github username
+  username: github_username             # change to your github username
 
 twitter:
-  username: fork_bombed            # change to your twitter username
+  username: twitter_username            # change to your twitter username
 
 social:
-  name: Murphy                  # it will shows as the copyright owner in Footer
-  email: murphy@unpacked.io             # change to your email address
+  name: your_full_name                  # it will shows as the copyright owner in Footer
+  email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/fork-bombed       # change to your github homepage
+    - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -43,18 +45,18 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 #--------------------------
 
-# if your site type is Project Pages site, change below value to '/projectname'
+
+# Only if your site type is GitHub Project sites and doesn't have a custom domain,
+# change below value to '/projectname'.
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Europe/London
+timezone: Asia/Shanghai
 
 google_analytics:
-  # Fill with your Google Analytics ID
-  id: ''
-  # The Google Analytics pageviews switch.
-
+  id: ''          # Fill with your Google Analytics ID
   pv:
+    # The Google Analytics pageviews switch.
     # DO NOT enable it unless you know how to deploy the Google Analytics superProxy.
     enabled: false
     # the next options only valid when `google_analytics.pv` is enabled.
@@ -76,7 +78,7 @@ disqus:
 #
 #     dark   - Use the dark color scheme
 #
-theme_mode: dark
+theme_mode: dual
 
 # boolean type, global switch for ToC in posts.
 toc: true
@@ -99,6 +101,8 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+# DO NOT change this unless you're a Pro user on Jekyll and Web development,
+# or you think you're smart enough to change other relevant URLs within this template.
 permalink: /posts/:title/
 
 defaults:
@@ -156,11 +160,6 @@ defaults:
         -
           label: Home
           url: /
-  -
-    scope:
-      path: assets/data
-    values:
-      layout: compress
 
 
 sass:
@@ -179,12 +178,13 @@ compress_html:
     envs: []
 
 exclude:
-  - vendor        # Avoid Jekyll mistakenly read the vender directory on Travis-CI's VM .
+  - vendor        # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
   - Gemfile.lock
   - Gemfile
   - tools
   - docs
   - README.md
+  - LICENSE
 
 sitemap_exclude:  # Sitemap will exclude the following items.
   fuzzy:

@@ -2,13 +2,15 @@
 
 🌏 [English](../README.md) • 简体中文
 
-[![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=event%3Apush)
+[![Build Status](https://github.com/cotes2020/jekyll-theme-chirpy/workflows/build/badge.svg?branch=master&event=push)](https://github.com/cotes2020/jekyll-theme-chirpy/actions?query=branch%3Amaster+event%3Apush)
 [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
 [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-一个不一样的响应式设计 Jekyll 主题（内附神秘工具），采用响应式设计，方便记录、管理、分享你的知识和经验。
+一个不一样的 Jekyll 主题，采用响应式设计，方便记录、管理、分享你的知识和经验。[懂的进 »](https://chirpy.cotes.info)
 
 [![Devices Mockup](https://raw.githubusercontent.com/cotes2020/jekyll-theme-chirpy/master/assets/img/sample/devices-mockup.png)](https://chirpy.cotes.info)
+
+> ⚠️ 中文版文档存在更新不及时的风险（开源文档以英文为主，请见谅）。如果发现中、英文内容不匹配的情况，一切以英文版内容为准。如果您愿意的话，可提交 issuse 提醒作者更新中文版 README，谢谢。
 
 ## 目录
 
@@ -22,15 +24,17 @@
 
 ## 功能预览
 
-* 自动暗夜模式
+* 文章置顶
+* 可配置的全局主题颜色
 * 文章最后修改日期
 * 文章目录
 * 自动推荐相关文章
 * 语法高亮
 * 二级目录
+* 数学表达式
 * 搜索
 * Atom 订阅
-*  Disqus 评论
+* Disqus 评论
 * Google 分析
 * GA 浏览报告（高级功能）
 * SEO 优化
@@ -41,9 +45,9 @@
 
 ### 准备工作
 
-按照 [Jekyll 官方文档](https://jekyllrb.com/docs/installation/) 完成基础环境的安装 (Ruby，RubyGem，Bundler 和 Jekyll)。
+按照 [Jekyll 官方文档](https://jekyllrb.com/docs/installation/) 完成基础环境的安装 (`Ruby`，`RubyGem`，`Bundler`)。
 
-为了使用项目内免费提供的脚本工具提升你的写作体验，如果你的机器系统是 Debian 或者 macOS，则需要确保安装了 [GNU coreutils](https://www.gnu.org/software/coreutils/)。否则，通过以下方式获得：
+为了使用项目内免费提供的脚本工具增进写作体验，如果你的机器系统是 Debian 或者 macOS，则需要确保安装了 [GNU coreutils](https://www.gnu.org/software/coreutils/)。否则，通过以下方式获得：
 
 * Debian
 
@@ -64,7 +68,6 @@ $ git clone git@github.com:USER/jekyll-theme-chirpy.git -b master
 ```
 
 把上述的`USER` 替换为你的 GitHub username。
-
 
 
 ### 安装 Jekyll 插件
@@ -111,23 +114,36 @@ jekyll-theme-chirpy/
 ```
 
 
-你需要将以下文件或目录删除:
+如备注所述，部分文件或目录需要被删除:
 
-- .travis.yml
-- .github
+```terminal
+$ rm -rf .travis.yml .github _posts/* 
+```
 
 
 ### 配置文件
 
 根据个人需要去修改 `_config.yml` 的变量，大部分都有注释介绍用法。
 
-* 头像
+* `url`
     
-    示例的头像文件放置在：`/assets/img/sample/avatar.jpg`. 把它换成你自己的头像，路径不限定，越小越好。(压缩图像体积可上这个网站：*<https://tinypng.com/>* ).
+    定义网站 URL，注意结尾不带 `/`。格式： `<protocol>://<domain>`.
 
-* 时区
+* `avatar`
+    
+    定义头像，示例的文件放置在：`/assets/img/sample/avatar.jpg`. 把它换成你自己的头像，路径不限定，越小越好。(压缩图像体积可上这个网站：*<https://tinypng.com/>* ).
 
-    时区由 `timezone` 定义，默认为 `亚洲/上海`，如果肉身翻墙要换城市可在此列表找到： [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) 或者 [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+* `timezone`
+
+    定义时区 ，默认为 `亚洲/上海`，如果肉身翻墙要换城市可在此列表找到： [TimezoneConverter](http://www.timezoneconverter.com/cgi-bin/findzone/findzone) 或者 [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+* `theme_mode`
+  
+    定义颜色方案，有三种可选：:
+    
+    - **dual**  - 自动跟随系统的 `深色`/`浅色` 设置，当系统或者浏览器不支持深色模式，则默认显示为浅色模式。无论如何，侧边栏左下角都会显示一个颜色切换按钮。
+    - **dark**  - 全程深色模式。
+    - **light** - 全程浅色模式。
 
 
 ###  本地运行
@@ -162,14 +178,21 @@ $ bash tools/run.sh
 **2**. 提交本地更改，然后运行:
 
 ```console
-$ bash tools/init.sh
+$ bash tools/publish.sh
 ```
 
 >**注**: *最后更新* 列表根据文章的 git 修改记录生成，所以运行前先把 `_posts` 目录的修改提交。
 
-它会自动生成文章的 *最后修改日期* 和 *分类 / 标签* 页面.
+它会自动生成文章的 *最后修改日期* 和 *分类 / 标签* 页面，并自动提交一个 commit 并推送到 `origin/master` 。输出日志类似如下：
 
-**3**. 推送到 `origin/master` 然后到 GitHub 网页为该项目开启 Pages 服务。
+```terminal
+[INFO] Success to update lastmod for 4 post(s).
+[INFO] Succeed! 3 category-pages created.
+[INFO] Succeed! 4 tag-pages created.
+[INFO] Published successfully!
+```
+
+**3**. 到 GitHub 网页为该项目开启 Pages 服务。
 
 **4**. 网站将运行在：
 
@@ -210,22 +233,24 @@ $ bash tools/build.sh -d /path/to/local/project/
 |User or Organization | `https://<username>.github.io/`|
 |Project| `https://<username>.github.io/project/`|
 
+#### 结束工作
+
+无论你选择了哪种方式部署网站到 GitHub Pages, 请开启 `HTTPS` 功能。具体细节参考官方说明：[Securing your GitHub Pages site with HTTPS](https://help.github.com/en/github/working-with-github-pages/securing-your-github-pages-site-with-https)。
 
 ### 文档
 
-更多细节及更佳的阅读体验，请参阅 [线上教程](https://chirpy.cotes.info/categories/tutorial/)。 与此同时，[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki) 也有一份教程的拷贝。
+若想要更多细节以及更佳的阅读体验，请参阅 [线上教程](https://chirpy.cotes.info/categories/tutorial/)。 与此同时，[Wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki) 也有一份教程的拷贝。
 
 
 ## 参与贡献
 
-三人行必有我师，欢迎提报告 bug, 帮助改进代码质量，或者提交新功能。具体操作规则请参考[此文](.github/CONTRIBUTING.md)，谢谢🙏。
+三人行必有我师，欢迎提报告 bug, 帮助改进代码质量，或者提交新功能。具体操作规则请参考 [贡献指南](../.github/CONTRIBUTING.md)，谢谢 🙏。
 
 ## 感谢
 
 这个主题的开发主要基于 [Jekyll](https://jekyllrb.com/) 生态、[Bootstrap](https://getbootstrap.com/)、[Font Awesome](https://fontawesome.com/) 和其他一些出色的工具 (相关文件中可以找到这些工具的版权信息).
 
-:tada:感谢所有参与代码贡献的小伙伴, 他们的 GayHub ID 在这个[列表](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors)。 另外, 提交过 issues(或者未被合并 PR)的高富帅和白富美也不会被遗忘,他/她们帮助报告 bug、分享新点子或者启发了我写出更通俗易懂的文档。
-
+:tada:感谢所有参与代码贡献的小伙伴, 他们的 GayHub ID 在这个[列表](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors)。 另外, 提交过 issues(或者未被合并 PR) 的高富帅和白富美也不会被遗忘,他/她们帮助报告 bug、分享新点子或者启发了我写出更通俗易懂的文档。
 
 
 ## 赞助
