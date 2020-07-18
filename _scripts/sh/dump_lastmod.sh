@@ -19,6 +19,7 @@ OUTPUT_FILE=updates.yml
 
 
 _init() {
+
   if [[ ! -d "$OUTPUT_DIR" ]]; then
     mkdir "$OUTPUT_DIR"
   fi
@@ -27,7 +28,9 @@ _init() {
     rm -f "$OUTPUT_DIR/$OUTPUT_FILE"
   fi
 
-  touch "$OUTPUT_DIR/$OUTPUT_FILE"
+  if [[ ! -d $POST_DIR ]]; then
+    exit 0
+  fi
 }
 
 
@@ -55,6 +58,10 @@ _has_changed() {
 _dump() {
   local _lasmod="`git log -1 --pretty=%ad --date=iso $2`"
 
+  if [[ ! -f "$OUTPUT_DIR/$OUTPUT_FILE" ]]; then
+    touch "$OUTPUT_DIR/$OUTPUT_FILE"
+  fi
+
   echo "-" >> "$OUTPUT_DIR/$OUTPUT_FILE"
   echo "  filename: '$1'" >> "$OUTPUT_DIR/$OUTPUT_FILE"
   echo "  lastmod: '$_lasmod'" >> "$OUTPUT_DIR/$OUTPUT_FILE"
@@ -67,14 +74,12 @@ main() {
 
   local _count=0
 
-  for _file in $(ls -r "$POST_DIR")
+  for _file in $(find ${POST_DIR} -type f \( -iname \*.md -o -iname \*.markdown \))
   do
-    _filepath="$POST_DIR/$_file"
-    _filename="${_file%.*}"     # jekyll cannot read the extension of a file, so omit it.
-    _filename=${_filename:11}   # remove the date
+    _filename=$(basename $_file | sed 's/[0-9]\([0-9]*-\)//g;s/\..*//' ) # remove date and extension
 
-    if _has_changed "$_filepath"; then
-      _dump "$_filename" "$_filepath"
+    if _has_changed "$_file"; then
+      _dump "$_filename" "$_file"
       ((_count=_count+1))
     fi
 

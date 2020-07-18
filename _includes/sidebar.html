@@ -15,15 +15,15 @@
         {% if start == '/' %}
           {% assign avatar_url = avatar_url | prepend: site.baseurl %}
         {% endif %}
-        <img src="{{ avatar_url }}" alt="avatar">
+        <img src="{{ avatar_url }}" alt="avatar" onerror="this.style.display='none'">
       </a>
     </div>
 
     <div class="profile-text mt-3">
-      <div id="site-title">
-        <a href="{{ site.baseurl }}/">{{- site.title -}}</a>
+      <div class="site-title">
+        <a href="{{ '/' | relative_url }}">{{- site.title -}}</a>
       </div>
-      <div id="site-subtitle" class="font-italic">{{- site.tagline -}}</div>
+      <div class="site-subtitle font-italic">{{- site.tagline -}}</div>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
         or item.name == page.tab_active
         or item.name == "Home" and page.layout == "home" %}active{% endif %}">
       <a href="{{ ref }}" class="nav-link d-flex justify-content-center align-items-center w-100">
-        <i class="fa-fw {{ item.icon }} ml-3 mr-3 unloaded"></i>
+        <i class="fa-fw {{ item.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
         <span>{{ item.name | upcase }}</span>
       </a>
     </li> <!-- .nav-item -->
@@ -64,18 +64,27 @@
   <span class="icon-border"></span>
   {% endif %}
 
-  <a href="https://github.com/{{ site.github.username }}" target="_blank">
-    <i class="fab fa-github-alt"></i>
-  </a>
-  <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank">
-    <i class="fab fa-twitter"></i>
-  </a>
-  {% assign email = site.social.email | split: '@' %}
-  <a href="javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))">
-    <i class="fas fa-envelope"></i>
-  </a>
-  <a href="{{ site.baseurl }}/feed.xml" target="_blank">
-    <i class="fas fa-rss"></i>
-  </a>
+  {% for entry in site.data.contact %}
+    {% capture url %}
+      {%- if entry.type == 'github' -%}
+        https://github.com/{{ site.github.username }}
+      {%- elsif entry.type == 'twitter' -%}
+        https://twitter.com/{{ site.twitter.username }}
+      {%- elsif entry.type == 'email' -%}
+        {% assign email = site.social.email | split: '@' %}
+        javascript:window.open('mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@'))
+      {%- elsif entry.type == 'rss' -%}
+        {{ "/feed.xml" | relative_url }}
+      {%- else -%}
+        {{ entry.url }}
+      {%- endif -%}
+    {% endcapture %}
+
+    {% if url != '' %}
+    <a href="{{ url }}" {% unless entry.noblank %}target="_blank"{% endunless %}>
+      <i class="{{ entry.icon }}"></i>
+    </a>
+    {% endif %}
+  {% endfor %}
 
 </div>
