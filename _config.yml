@@ -8,9 +8,9 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: Unpacked                          # the main title
+title: Unpacked.io                          # the main title
 
-tagline: Security unpacked.  # it will display as the sub-title
+tagline: My journey through Reverse Engineering and Malware Analysis  # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Follow my journey as I learn more about Reverse Engineering and Malware Analysis. 
@@ -26,7 +26,7 @@ github:
   username: fork-bombed             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: fork_bombed            # change to your twitter username
 
 social:
   name: Murphy                  # it will shows as the copyright owner in Footer

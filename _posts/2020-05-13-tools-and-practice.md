@@ -1,8 +1,8 @@
 ---
-title: 1 - Tools and Practice
+title: Tools and Practice
 author: Murphy
 date: 2020-05-13 09:00:00 +0100
-categories: [Reverse Engineering, Tools]
+categories: [Reverse Engineering]
 tags: [ghidra, radare2, gdb, ida, ollydbg, crackme]
 ---
 
