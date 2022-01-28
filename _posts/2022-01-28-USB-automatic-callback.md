@@ -49,7 +49,7 @@ $Shortcut.Save()
 
 This generated a shortcut called `test` which had the default file icon. I went to right click and check the properties of the shortcut, but the properties window didn't show up. It took about 10 seconds before it finally showed up, and I got a hit on my webhook:
 
-![Request](../assets/img/3/request.png)
+![Request]({{ "/assets/img/3/request.png" | relative_url }})
 
 I removed the USB device and plugged it back in again, and after about 5 or 10 seconds I got the request again without having to touch anything. As the USB device is plugged in, it tries to resolve the shortcut's icon as it's in the root directory, which reaches out to my webhook.
 
