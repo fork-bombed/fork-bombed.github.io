@@ -1,0 +1,188 @@
+I"�3<p>In order to start reversing my first program, I’ll need (at least) two tools: a disassembler and a debugger. A disassembler converts machine code into assembly language and will allow me to view the program’s instructions without actually running it (<em>static analysis</em>). A debugger will allow me to view and alter the program’s memory while it’s running (<em>dynamic analysis</em>). This is very powerful as I can set breakpoints and view data in registers and on the stack as each instruction is executed.</p>
+
+<p>There are plenty of disassemblers and debuggers out there and it can be hard to choose the right one, so I’ve compiled a list of the most popular ones and my first impressions of them.</p>
+
+<h2 id="ida">IDA</h2>
+
+<p>IDA is a disassembler and debugger, which comes in handy as you can do static and dynamic analysis from the same program. On top of this, it comes with a decompiler which converts the assembly code into a high-level pseudocode (resembling C) to make it easier to analyse files.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![IDA Screenshot]({{ “/assets/img/1/ida_screenshot.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In my opinion, IDA has one of the best interfaces for viewing the control flow of a program. It has a useful graph view that allows you to see where certain subroutines jump to and easily find cross-references. Unfortunately, the free version of IDA doesn’t come with a decompiler or debugger, and plugins may not work as expected. With licenses upwards of 500 USD for IDA Pro, it just doesn’t seem like a viable option for me as a student.</p>
+
+<p>You can download IDA Freeware here: <a href="https://www.hex-rays.com/products/ida/support/download_freeware/">https://www.hex-rays.com/products/ida/support/download_freeware/</a></p>
+
+<h2 id="ghidra">Ghidra</h2>
+
+<p>Ghidra is an open source disassembler released by the NSA (National Security Agency). The source code is available on the <a href="https://github.com/NationalSecurityAgency/ghidra">NSA’s GitHub</a> which means you can follow issues, updates, and download new versions as soon as they’re released. It comes with its own decompiler, and although it may not be as good as IDA Pro’s, it is able to handle most things thrown at it.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![Ghidra Screenshot]({{ “/assets/img/1/ghidra_screenshot.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The interface is quite similar to IDA’s, but it feels a lot more simplistic, which is nicer for beginners who don’t want to be bombarded with a bunch of unknown words. Ghidra comes with a lot of the same features as IDA Pro, which is what makes it so appealing to people looking to get started in reverse engineering. Unfortunately, Ghidra does not come with a debugger and is unable to write patched bytes to a new file, however, the pros greatly outweigh the cons and I would highly recommend Ghidra to any newcomers.</p>
+
+<p>You can download the latest version of Ghidra here: <a href="https://ghidra-sre.org/">https://ghidra-sre.org/</a></p>
+
+<h2 id="radare2">Radare2</h2>
+
+<p>Radare2 is an open source, command-line disassembler and debugger. It supports multiple different architectures and allows scripting in several different languages by making use of its internal API.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![Radare Screenshot]({{ “/assets/img/1/radare_screenshot.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Since radare2 has a command line interface, it can be quite difficult for beginners to understand what’s happening. It has hundreds of different commands which can be hard to remember (fortunately, it has some useful help menus). Radare2 has a steep learning curve, but is very powerful once you’ve mastered the commands and know what you’re doing. I’ve been playing about with this one for a while and can definitely see the appeal, but I just don’t know if I have the time to learn radare2 and use it to its full potential. It will come in handy when debugging later on, but for now I’ll stick to using Ghidra and IDA for disassembling.</p>
+
+<p>You can download Radare2 here: <a href="https://github.com/radareorg/radare2">https://github.com/radareorg/radare2</a></p>
+
+<h2 id="debuggers">Debuggers</h2>
+
+<p>I haven’t started doing any dynamic analysis yet, so I haven’t had the chance to use a debugger. However, there are two main debuggers (excluding the ones included in IDA Pro and Radare2) that I will use when I get round to it: GDB and Ollydbg.</p>
+
+<p>GDB is a command line debugger (and disassembler) and requires you to learn the commands like Radare2. I haven’t used it before, but I’ve seen it being used in <a href="https://www.youtube.com/playlist?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN">LiveOverflow’s binary exploitation playlist</a> and it looks to be pretty powerful.</p>
+
+<p>Ollydbg is exclusively a Windows debugger and has a decent user interface. I have used it a little in the past, but haven’t really done any real debugging with it.</p>
+
+<p>You can download GDB here: <a href="https://www.gnu.org/software/gdb/download/">https://www.gnu.org/software/gdb/download/</a></p>
+
+<p>You can download Ollydbg here: <a href="http://www.ollydbg.de/">http://www.ollydbg.de/</a></p>
+
+<h2 id="practice">Practice</h2>
+
+<p>I only have a very basic understanding of x86 assembly and little experience with reverse engineering, so I started reading <a href="https://www.amazon.com/dp/1118787315">Practical Reverse Engineering</a> and following the exercises in the book. I’ll start by reversing simple programs and stepping through them one instruction at a time until I fully understand what’s happening. Once I have a better foundational understanding, then I’ll start moving onto CTF (capture the flag) challenges and crackmes. Reversing CTF challenges generally consist of a program (or multiple) with hidden flags in them. The flags are generally strings in the format <code class="language-plaintext highlighter-rouge">flag{message_here}</code> and are easily noticeable. Your job is to collect these flags and submit them for points.</p>
+
+<p>A crackme is a program that is designed to be reverse engineered and cracked. They usually ask for a password or code on startup and will print out the flag or secret message. It is your job to try and bypass this check or generate a password/code that works.</p>
+
+<p>There are plenty CTF sites out there such as <a href="https://hackthebox.eu">HackTheBox</a> and <a href="https://tryhackme.com">TryHackMe</a>, however HackTheBox requires you to complete a small challenge to access the site. You can find crackmes at <a href="https://crackmes.one">https://crackmes.one</a>, make sure to run them in a virtual machine unless you trust the file!</p>
+
+<h2 id="first-crackme">First Crackme</h2>
+
+<p>To get started, I chose an easy crackme called <a href="https://crackmes.one/crackme/5eae2d6633c5d47611746500">easyAF</a>. I downloaded the file and unzipped it to get the binary file and ran <code class="language-plaintext highlighter-rouge">file easyAF</code> to get the file type:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>easyAF: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c1f484166af165c71e71e8e0e5ebd8f9d6300f0a, for GNU/Linux 3.2.0, not stripped
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>This shows that the file is a 64-bit ELF executable using x86-64 architecture and is to be executed on a Linux system. The first thing I done was boot up my Linux VM (virtual machine) and execute the file to see what kind of inputs and outputs it gives.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![File Output]({{ “/assets/img/1/run_file.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So the program is looking for a password. A simple way to do beat this would be to run <code class="language-plaintext highlighter-rouge">strings</code> on the program, read any text stored in the binary and guess which one is the password. However, I want to practice my reversing skills, so I opened it up in IDA and tried to figure out what was happening.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![IDA Graph View]({{ “/assets/img/1/ida_flow.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>IDA’s graph view made it very simple to follow the control flow of the program. There are two strings that stand out to me at the top <code class="language-plaintext highlighter-rouge">"Enter the password: "</code> and <code class="language-plaintext highlighter-rouge">"pass"</code>. It’s very likely that <code class="language-plaintext highlighter-rouge">pass</code> is the password, but I decided to follow the instructions step-by-step to get a better understanding of how these strings were being compared.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre>var_60 = byte ptr -60h
+var_40 = byte ptr -40h
+
+lea     rax, [rbp+var_60]
+mov     rdi, rax
+call    basic_string
+lea     rax, [rbp+var_60]
+lea     rsi, aPass      ; "pass"
+mov     rdi, rax
+call    assign
+lea     rax, [rbp+var_40]
+mov     rdi, rax
+call    basic_string
+lea     rsi, aEnterThePasswo ; "Enter the password: "
+lea     rdi, cout
+call    basic_ostream
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>From my understanding, this chunk of code is creating space on the stack at <code class="language-plaintext highlighter-rouge">rbp-60h</code> and storing the string <code class="language-plaintext highlighter-rouge">pass</code>. It then creates space at <code class="language-plaintext highlighter-rouge">rbp-40h</code> and prints <code class="language-plaintext highlighter-rouge">"Enter the password: "</code> out to the screen using <code class="language-plaintext highlighter-rouge">cout</code>. This part of the code is just initialising variables and printing to the console, but the next bit of code is where the main logic behind the program starts.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>lea     rax, [rbp+var_40]
+mov     rsi, rax
+lea     rdi, cin
+call    basic_istream
+lea     rdx, [rbp+var_60]
+lea     rax, [rbp+var_40]
+mov     rsi, rdx
+mov     rdi, rax
+call    compare
+test    al, al
+jz      short loc_129B
+lea     rsi, aWelldone  ; "Welldone!"
+lea     rdi, cout
+call    basic_ostream
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Now the program is getting user input using <code class="language-plaintext highlighter-rouge">cin</code> and storing it on the stack at <code class="language-plaintext highlighter-rouge">rbp-40h</code> which was previously initialised. It stores pointers to <code class="language-plaintext highlighter-rouge">"pass"</code> and the user input and stores them in <code class="language-plaintext highlighter-rouge">rsi</code> and <code class="language-plaintext highlighter-rouge">rdi</code> respectively which are sent to a function that compares the strings. Upon inspecting the compare function further, it returns 1 if both strings are equal, otherwise it will return 0.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>![Compare Function]({{ “/assets/img/1/compare.png”</td>
+      <td>relative_url }})</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When the function returns a value, it stores it in <code class="language-plaintext highlighter-rouge">rdx</code>. However, in this case we are going to have a return value of 0 or 1, so we use <code class="language-plaintext highlighter-rouge">al</code> which is the last 8 bits of <code class="language-plaintext highlighter-rouge">rdx</code>. In the next line, we are doing a TEST on <code class="language-plaintext highlighter-rouge">al</code>, this just performs a bitwise AND and sets the ZF (zero flag) if the result is 0. So if the strings are not equal, then ZF will be set to 1. To finish it off we have a <code class="language-plaintext highlighter-rouge">jz</code> which will jump to the instructions that display <code class="language-plaintext highlighter-rouge">"Nope"</code> if the ZF is set, otherwise it will continue with execution as normal and display <code class="language-plaintext highlighter-rouge">"Welldone!"</code> to the screen.</p>
+
+<p>As predicted before, <code class="language-plaintext highlighter-rouge">"pass"</code> is the password for the program, but going through this program step-by-step gave me a better understanding of how it worked.</p>
+:ET
